@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MAX HUB | Premium Delivery</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;600;900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div id="success-screen" class="full-overlay hidden">
+        <div class="success-content">
+            <div class="checkmark-wrapper">
+                <svg class="checkmark" viewBox="0 0 52 52">
+                    <circle class="checkmark-circle" cx="26" cy="26" r="25" fill="none"/>
+                    <path class="checkmark-check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+                </svg>
+            </div>
+            <h1 class="glow-text">ORDER SUCCESSFUL</h1>
+            <div id="receipt-box" class="receipt-card"></div>
+            <button class="action-btn" onclick="location.reload()">Back to Menu</button>
+        </div>
+    </div>
+
+    <div id="login-screen" class="full-overlay">
+        <div class="glass-card login-box">
+            <h1 class="brand-logo">MAX<span>HUB</span></h1>
+            <p style="opacity:0.5; font-size: 0.8rem; margin-bottom: 20px;">PREMIUM FOOD DELIVERY</p>
+            <input type="text" id="username" placeholder="Enter your name">
+            <button class="action-btn" onclick="enterHub()">Explore Menu</button>
+        </div>
+    </div>
+
+    <div id="main-app" class="hidden">
+        <header>
+            <div class="logo">MAX<span>HUB</span></div>
+            <div class="cart-pill" onclick="toggleCart()">
+                BAG <span id="cart-count">0</span>
+            </div>
+        </header>
+
+        <section class="hero-section">
+            <h2>Deliciously Delivered.</h2>
+            <p>Trending Flavors Near You</p>
+        </section>
+
+        <div id="food-grid" class="grid-layout">
+            </div>
+    </div>
+
+    <div id="cart-sheet" class="bottom-sheet">
+        <div class="drag-handle" onclick="toggleCart()"></div>
+        <div class="sheet-body">
+            <h3>Your Bag</h3>
+            <div id="cart-items-list"></div>
+            <div class="price-summary">
+                <span>Total Amount:</span>
+                <span id="cart-total">₹0</span>
+            </div>
+            <button class="action-btn" id="pay-trigger-btn">Proceed to Checkout</button>
+        </div>
+    </div>
+
+    <div id="payment-modal" class="modal-overlay hidden">
+        <div class="glass-card payment-box">
+            <h3>Card Details</h3>
+            <div class="card-form">
+                <input type="text" id="card-num" placeholder="0000 0000 0000 0000" maxlength="19">
+                <div class="form-row">
+                    <input type="text" placeholder="MM/YY" maxlength="5">
+                    <input type="text" placeholder="CVV" maxlength="3" style="width: 45%;">
+                </div>
+            </div>
+            <button class="action-btn" onclick="finalizePayment()">Pay <span id="pay-amt">₹0</span></button>
+            <button class="cancel-text" onclick="closePayment()">Go Back</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
